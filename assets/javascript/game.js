@@ -2,32 +2,99 @@
 $(function(){
 
 // Create players (objects --> [perhaps array of objects?]) with their own values {name:, image:, healthPoint:, attackPower: '6', counterAttackPower:, }
-// create (empty?) player variable
 
-var mainPlayer = {name:'', imgSrc:'', healthPoints:''}
+var playerArr = [
+    { name: 'Splinter',
+      imgSrc: 'https://pixelatedpop.com/sites/default/files/u4/tmntSplinter.JPG',
+      HealthPoints: '180',
+      attackPower: '6',
+      counterAttackPower: '35',  
+    },
+    { name: 'Donatello',
+      imgSrc: 'https://i.pinimg.com/originals/5f/fb/a3/5ffba397e55ef633ea78bb157e8e2b58.jpg',
+      HealthPoints: '110',
+      attackPower: '6',
+      counterAttackPower: '18',  
+    },
+    { name: 'Shredder',
+      imgSrc: 'https://res.cloudinary.com/jpress/image/fetch/ar_3:2,c_fill,f_auto,h_400,w_599/http://www.wow247.co.uk/wp-content/uploads/2014/09/Shredder-TMNT.jpg',
+      HealthPoints: '190',
+      attackPower: '6',
+      counterAttackPower: '30',  
+    },
+    { name: "April O'Neil",
+      imgSrc: 'http://thathashtagshow.com/wp-content/uploads/2017/11/tmnt-classics-april-oneil-300x226.jpeg',
+      HealthPoints: '80',
+      attackPower: '6',
+      counterAttackPower: '10',  
+    },
+
+]
+
+// create (empty?) player variable
+var mainPlayer = ' ';
+
 // create (empty?) defender variable
+var mainDefender = ' ';
 
 //Game starts
 
+//create the newElement variables we are going to use
+var parentDiv = $('#character-row');
+
 // Character row populates with the four characters (random order possibly)
+playerArr.forEach(function(value, index){
+    var newHTML = `
+    <div id ="`+value.name+`"class="col-md-3 text-center mx-auto character-choice"> 
+    <div class="card">
+        <div class="card-header">
+                <h3 class="card-title">`+value.name+`</h3>
+        </div>
+        <div class="card-body text-center">
+                <img src="`+value.imgSrc+`" class="rounded img-fluid">
+        </div>
+    </div>             
+    </div>
+    `
+    console.log(value.name+" @ index "+index)
+    $(parentDiv).append(newHTML);
+})
+
 
 //Click on character element selects the players character choice
     //create on click event for the "character" element .class
-        //if player var === '' then var player = this.characterName (object?)
-            //moves that character from the fighter area to the main player area
-            //set player variable to character values (Main Player attackPower will be set to 6) -- I think everything else will be 'this.value'
-                //update DOM to reflect those values
+    $(document).on('click', '.character-choice', function(){
+        var matchName = $(this).find('.card-title').text();
+        var matchIndex;
+        playerArr.forEach(function(value, index) {
+            if (matchName === value.name ) {
+                //get index of matched character to send to fighter area
+                console.log('character is: '+value.name+'at index: '+index);
+                console.log(value)
+                
+                //Player var === '' then var player = this.characterName (object?)
+                if (mainPlayer === ' ') {
+                    mainPLayer = value;
+                    console.log(mainPlayer);
+                }
+            };
+        });     
+        //moves that character from the fighter area to the main player area
+        //set player variable to character values (Main Player attackPower will be set to 6) -- I think everything else will be 'this.value'
+        //update DOM to reflect those values
         //else if 
         //defender var === '' then var defender = this.CharacterName (object?)
-            //moves that character from fighter area to main "defender" position
-            //set player variable to character values
-                //update DOM to reflect those values
+        //moves that character from fighter area to main "defender" position
+        //set player variable to character values
+        //update DOM to reflect those values
         //else
         // either nothing happens or notification that players have already been chosen and must fight
-
-    //other characters move to be centered in the selection area
-
-                    
+        
+        //other characters move to be centered in the selection area
+        
+    });        
+        
+    
             //The stage is now set to start the fight. 
     
 //Player will "attack" by clicking the attack button

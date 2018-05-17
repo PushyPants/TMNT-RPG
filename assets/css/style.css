@@ -1,3 +1,10 @@
+body {
+    background-color: #95CA60;
+}
 .fighters-body {
     min-height: 400px;
+}
+
+#characterRow-cardBody {
+    min-height: 380px;
 }

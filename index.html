@@ -15,125 +15,86 @@
 </head>
 <body>
 
-        <div class="jumbotron">
-                <h1 class="text-center">Welcome to PUSH's RPG</h1>
-                <h2 class="text-center">Pick a character as your fighter then a character to fight against</h2>
+<div class="jumbotron">
+        <h1 class="text-center">Welcome to PUSH's RPG</h1>
+        <h2 class="text-center">Pick a character as your fighter then a character to fight against</h2>
+</div>
+<!-- Overall container for the game play area -->
+<div class="container">
+    <!-- first card that hold the active fighters in the game -->
+    <div class="card fightersCard">
+    <div class="card-header ">  
+        <div class="container">
+            <!-- Left fighter score -->
+            <div class="row">    
+                <div class="col-md-4 text-left score-left">              
+                    <h3 class="card-title">Left HP: </h3>
+                </div>
+                <div class="col-md-4 text-center">              
+                    <h3 class="card-title">fighters</h3>
+                </div>
+                <!-- Right side fighter score -->
+                <div class="col-md-4 text-right score-right">              
+                    <h3 class="card-title">Right HP:</h3>
+                </div>
+            </div>
+        </div>   
+    </div>
+    <!-- This is where the images of the fighters will be held -->
+    <div class="card-body fighters-body">
+        <div class="container">
+                <div class="row">  
+                    <div class="col-md-4 text-center left-fighter-image"> 
+                        <div class="card">
+                            <div class="card-header">
+                                    <h3 class="card-title">Left Fighter</h3>
+                            </div>
+                            <div class="card-body text-center">
+                                    <img src="http://via.placeholder.com/250x250" class="rounded img-fluid" alt="...">
+                            </div>
+                        </div>             
+                    </div>
+                    <div class="col-md-4 text-center running-score">  
+                        <div class="card" style="border: none;">
+                            <div class="card-body text-center">
+                                Running score will be placed here 
+                                <button type="button" class="btn btn-danger attack-btn">ATTACK!!!</button> 
+                            </div>
+                        </div>                
+                    </div>
+                    <!-- Right fighter images will be placed in the div below  -->
+                    <div class="col-md-4 text-center">    
+                            <div class="card">
+                                    <div class="card-header">
+                                            <h3 class="card-title">Right Fighter</h3>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <!-- *** Right image goes here *** -->
+                                    </div>
+                                </div>                                                   
+                    </div>
+                </div>
+            </div>  
+    </div>
+    </div>
+    <br />
+
+    <div class="card">
+    <div class="card-header text-center">
+        <h3 class="card-title">Pick Your Character</h3>
+    </div>
+    <div id="characterRow-cardBody" class="card-body text-center">
+        <div class="container">
+            <div id ="character-row" class="row character-row">
+               
+            </div>
         </div>
-                <!-- Overall container for the game play area -->
-              <div class="container">
-                    <!-- first card that hold the active fighters in the game -->
-                  <div class="card fightersCard">
-                    <div class="card-header ">  
-                        <div class="container">
-                            <!-- Left fighter score -->
-                            <div class="row">    
-                                <div class="col-md-4 text-left score-left">              
-                                    <h3 class="card-title">Left HP: </h3>
-                                </div>
-                                <div class="col-md-4 text-center">              
-                                    <h3 class="card-title">fighters</h3>
-                                </div>
-                                <!-- Right side fighter score -->
-                                <div class="col-md-4 text-right score-right">              
-                                    <h3 class="card-title">Right HP:</h3>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                    <!-- This is where the images of the fighters will be held -->
-                    <div class="card-body fighters-body">
-                        <div class="container">
-                                <div class="row">  
-                                    <div class="col-md-4 text-center left-fighter-image"> 
-                                        <div class="card">
-                                            <div class="card-header">
-                                                    <h3 class="card-title">Left Fighter</h3>
-                                            </div>
-                                            <div class="card-body text-center">
-                                                    <img src="http://via.placeholder.com/250x250" class="rounded img-fluid" alt="...">
-                                            </div>
-                                        </div>             
-                                    </div>
-                                    <div class="col-md-4 text-center running-score">  
-                                        <div class="card" style="border: none;">
-                                            <div class="card-body text-center">
-                                                Running score will be placed here 
-                                                <button type="button" class="btn btn-danger attack-btn">ATTACK!!!</button> 
-                                            </div>
-                                        </div>                
-                                    </div>
-                                    <!-- Right fighter images will be placed in the div below  -->
-                                    <div class="col-md-4 text-center">    
-                                            <div class="card">
-                                                    <div class="card-header">
-                                                            <h3 class="card-title">Right Fighter</h3>
-                                                    </div>
-                                                    <div class="card-body text-center">
-                                                        <!-- *** Right image goes here *** -->
-                                                    </div>
-                                                </div>                                                   
-                                    </div>
-                                </div>
-                            </div>  
-                    </div>
-                  </div>
-                  <br />
-            
-                  <div class="card">
-                    <div class="card-header text-center">
-                      <h3 class="card-title">Pick Your Character</h3>
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 text-center mx-auto character-choice"> 
-                                    <div class="card">
-                                        <div class="card-header">
-                                                <h3 class="card-title">Some Character</h3>
-                                        </div>
-                                        <div class="card-body text-center">
-                                                <img src="http://via.placeholder.com/250x250" class="rounded img-fluid alt="...">
-                                        </div>
-                                    </div>             
-                                </div>
-                                <div class="col-md-3 text-center mx-auto character-choice"> 
-                                    <div class="card">
-                                        <div class="card-header">
-                                                <h3 class="card-title">Some Character</h3>
-                                        </div>
-                                        <div class="card-body text-center">
-                                                <img src="http://via.placeholder.com/250x250" class="rounded img-fluid alt="...">
-                                        </div>
-                                    </div>             
-                                </div>
-                                <div class="col-md-3 text-center mx-auto character-choice"> 
-                                    <div class="card">
-                                        <div class="card-header">
-                                                <h3 class="card-title">Some Character</h3>
-                                        </div>
-                                        <div class="card-body text-center">
-                                                <img src="http://via.placeholder.com/250x250" class="rounded img-fluid alt="...">
-                                        </div>
-                                    </div>             
-                                </div>
-                                <div class="col-md-3 text-center mx-auto character-choice"> 
-                                    <div class="card">
-                                        <div class="card-header">
-                                                <h3 class="card-title">Some Character</h3>
-                                        </div>
-                                        <div class="card-body text-center">
-                                                <img src="http://via.placeholder.com/250x250" class="rounded img-fluid alt="...">
-                                        </div>
-                                    </div>             
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-            
-                  
-             
-              </div>
+    </div>
+    </div>
+
+    
+
+</div>
     
 </body>
 </html>
