@@ -46,29 +46,61 @@ var mainDefender;
 //create the newElement variables we are going to use
 var parentDiv = $('#character-row');
 
+function updateMainPlayer (){
+    var lftHP = $('#left-hp').text(mainPlayer.HealthPoints);
+    var lftPlayer = $('#left-player-name').text(mainPlayer.name);
+    var lftImg = $('#left-player-img').attr('src',mainPlayer.imgSrc);
+    //$('#left-hp').fadeOut();
+    (lftHP).fadeIn();
+    //$('#left-player-name').fadeOut();
+    (lftPlayer).fadeIn();
+    //$('#left-player-img').fadeOut();
+    (lftImg).fadeIn();
+    
+}
 function updateMainDefender (){
-    $('#left-hp').text('Health Points: '+mainPlayer.HealthPoints);
-    $('#left-player-name').text(mainPlayer.name);
-    $('#left-player-img').attr('src',mainPlayer.imgSrc);
+    $('#right-hp').text(mainDefender.HealthPoints);
+    $('#right-player-name').text(mainDefender.name);
+    $('#right-player-img').attr('src',mainDefender.imgSrc);
 }
 
+//function to reset Player 2
+function resetPlayer2() {
+    $('#right-hp').text('???');
+    $('#right-player-name').text('Player 2');
+    $('#right-player-img').attr('src', 'assets/images/placeholder.png');
+    mainDefender = undefined;
+    }
+
+//funtion to reset mainDefender
+function resetPlayer1(){
+    $('#left-hp').text('???');
+    $('#left-player-name').text('Player 1');
+    $('#left-player-img').attr('src', 'assets/images/placeholder.png');
+    mainPlayer = undefined;
+    }
+//create funtion to populate the characters row
+    function populateCharacters(){
+        playerArr.forEach(function(value, index){
+            var newHTML = `
+            <div id ="`+value.id+`"class="col-md-3 text-center mx-auto character-choice"> 
+            <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">`+value.name+`</h3>
+            </div>
+            <div class="card-body text-center">
+            <img src="`+value.imgSrc+`" class="rounded img-fluid">
+            </div>
+            </div>             
+            </div>
+            `
+            console.log(value.name+" @ index "+index)
+            $(parentDiv).append(newHTML);
+        });
+    };
+    
 // Character row populates with the four characters (random order possibly)
-playerArr.forEach(function(value, index){
-    var newHTML = `
-    <div id ="`+value.id+`"class="col-md-3 text-center mx-auto character-choice"> 
-    <div class="card">
-        <div class="card-header">
-                <h3 class="card-title">`+value.name+`</h3>
-        </div>
-        <div class="card-body text-center">
-                <img src="`+value.imgSrc+`" class="rounded img-fluid">
-        </div>
-    </div>             
-    </div>
-    `
-    console.log(value.name+" @ index "+index)
-    $(parentDiv).append(newHTML);
-})
+populateCharacters();
 
 
 //Click on character element selects the players character choice
@@ -97,48 +129,84 @@ playerArr.forEach(function(value, index){
                     $('#'+value.id).fadeOut();
                     console.log(mainPlayer.name) //works! 
                     //moves that character from the fighter area to the main player area
-                    updateMainDefender();
+                    updateMainPlayer();
 
                     //else if 
                 } else if(mainDefender === undefined) {
-                    
+                    //defender var === '' then var defender = this.CharacterName (object?)
+                    //set player variable to character values 
+                    mainDefender = {
+                        name:value.name, 
+                        id:value.id,
+                        imgSrc:value.imgSrc, 
+                        HealthPoints:value.HealthPoints, 
+                        attackPower:value.attackPower, 
+                        counterAttackPower:value.counterAttackPower
+                    }
+                    //remove character from character pen
+                    $('#'+value.id).fadeOut();
+                    console.log(mainDefender.name) //works! 
+                    //moves that character from character pen to main "defender" position
+                    //set player variable to character values
+                    //update DOM to reflect those values
+                    updateMainDefender();
                 }       
             };
         });     
-        //defender var === '' then var defender = this.CharacterName (object?)
-        //moves that character from fighter area to main "defender" position
-        //set player variable to character values
-        //update DOM to reflect those values
-        //else
-        // either nothing happens or notification that players have already been chosen and must fight
-        
-        //other characters move to be centered in the selection area
-        
+                
     });        
         
     
             //The stage is now set to start the fight. 
     
 //Player will "attack" by clicking the attack button
-    // create on click event for the attack button
-        //.on('click') event 
-            //Deacrease mainDefender's health points by mainPLayer's current attack value
-                //Modify DOM to current value
-            //Deacrease mainPlayer's heathPoints by the defender's counterAttack value
-                //Modify DOM to current value
-            //update mainPlayer's attack value to add 6 (mainPlayer.attackValue += 6 perhaps)
+// create on click event for the attack button
+$(document).on('click','#attack-btn', function () {
+    //check to see if all players have been selected
+    if (mainDefender === undefined) {
+        //Send message that all players must be chosed before you can fight
+        console.log('Not all players chosen')
+    } else {
+        //Deacrease mainDefender's health points by mainPLayer's current attack value
+        mainDefender.HealthPoints -= mainPlayer.attackPower;
+        //Deacrease mainPlayer's heathPoints by the defender's counterAttack value
+        mainPlayer.HealthPoints -= mainDefender.counterAttackPower;
+        //update mainPlayer's attack value to add 6 
+        mainPlayer.attackPower = parseInt(mainPlayer.attackPower) + 6;
+        //Modify DOM to current value
+        updateMainDefender();
+        updateMainPlayer();
+
+        //if mainPlayer healthPoints > 0 && mainDefender.healthPoints <= 0
+        if (mainPlayer.HealthPoints > 0 && mainDefender.HealthPoints <=0) {
+            //Player Wins
+            console.log('Player 1 WINS!');
+            //remove defender element from defender area
+            resetPlayer2()
+                
+                   //mainDefender HP > 0 && mainPLayer HP <= 0 
+        } else if (mainDefender.HealthPoints > 0 && mainPlayer.HealthPoints <= 0) {
+                //Player loses
+                console.log('Player 1 LOSES')
+                resetPlayer1();
+                resetPlayer2();
+                populateCharacters();        }
+        
+    }
+});
+
+                
             
-            //if mainPlayer healthPoints > 0 && mainDefender.healthPoints <= 0
-                //Player Wins
-                //remove defender element from defender area
-                    //clear all defender DOM values 
-                //Clear defender variable (set back to '')
-            //else if
-                //mainDefender HP > 0 && mainPLayer HP <= 0 
-                    //Player loses
+            
         
 
 
+    //Possible additions
+        //additional stats on current players
+
+        //Sound effects, theme song, mute sounds button
+        //shuffle additional players into the main deck
+        //additional styling
 
 
 

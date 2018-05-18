@@ -7,6 +7,10 @@ body {
     background-color: #95CA60;
 }
 
+.card-title.inline {
+    display: inline;
+}
+
 h3 {
     font-family: turtles-webfont;
     font-size: 30px;
@@ -16,6 +20,12 @@ h3 {
     -webkit-text-stroke-color: white; */
 
 }
+
+/* .attack-btn {
+    font-family: turtles-webfont;
+    color: White;
+    font-size:16px;
+} */
 
 .jumbotron {
     padding-top: 15px;
