@@ -180,18 +180,32 @@ $(document).on('click','#attack-btn', function () {
         //if mainPlayer healthPoints > 0 && mainDefender.healthPoints <= 0
         if (mainPlayer.HealthPoints > 0 && mainDefender.HealthPoints <=0) {
             //Player Wins
-            console.log('Player 1 WINS!');
+            mainDefender.HealthPoints = 0;
+            $('.modal-body').empty();
+            $('.modal-body').html('Righteous dude! You totally won!!! <br> Click the button to go again!');
+            $('#modalBox').modal('show');
+            $('.modal-footer').on('click','.btn',function(){
+                $('#modalBox').modal('hide');
+                resetPlayer2();
+            })
+            
+            
             //remove defender element from defender area
-            resetPlayer2()
                 
                    //mainDefender HP > 0 && mainPLayer HP <= 0 
         } else if (mainDefender.HealthPoints > 0 && mainPlayer.HealthPoints <= 0) {
                 //Player loses
-                console.log('Player 1 LOSES')
-                resetPlayer1();
-                resetPlayer2();
-                $('#character-row').empty();
-                populateCharacters();        
+                mainDefender.HealthPoints = 0;
+                $('.modal-body').empty();
+                $('.modal-body').html('Bogus dude! You totally lost!!! <br> Click the button to go again!');
+                $('#modalBox').modal('show');
+                $('.modal-footer').on('click','.btn',function(){
+                    $('#modalBox').modal('hide');   
+                    resetPlayer1();
+                    resetPlayer2();
+                    $('#character-row').empty();
+                    populateCharacters();        
+            })
             }
         
     }

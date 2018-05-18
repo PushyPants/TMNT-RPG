@@ -36,7 +36,7 @@ h3 {
     letter-spacing: 2px;
     color: black;
     /* -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: white; */
+    -webkit-text-stroke-color: #333; */
 
 }
 
@@ -70,4 +70,35 @@ h3 {
 
 #characterRow-cardBody {
     min-height: 380px;
+}
+
+#modalTitle img {
+    width: 225px;
+    position: relative;
+    left: -9px;
+}
+
+.modal-content {
+    background-color: #95ca60;
+    border-radius: 55px;
+    border: 5px solid #fb0000;
+}
+
+.modal-header {
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+
+.modal-body {
+    font-size: 2rem;
+    font-weight: bolder;
+    line-height: 40px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-backdrop {
+    opacity: 0;
 }
