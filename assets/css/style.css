@@ -1,9 +1,40 @@
+@font-face {
+    font-family: "turtles-webfont";
+    src: url(../fonts/turtles-webfont.otf);
+    }
+
 body {
     background-color: #95CA60;
 }
-.fighters-body {
-    min-height: 400px;
+
+h3 {
+    font-family: turtles-webfont;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: black;
+    /* -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white; */
+
 }
+
+.jumbotron {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #95ca60;
+    border-bottom: 10px solid #FB0000;
+    box-shadow: 0px 3px 5px 0px rgb(35, 35, 35);
+}
+
+.turtle-logo {
+    position: relative;
+    left: -22px;
+    height: 275px;
+}
+
+
+/* .fighters-body {
+    min-height: 400px;
+} */
 
 #characterRow-cardBody {
     min-height: 380px;

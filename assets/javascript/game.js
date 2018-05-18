@@ -5,24 +5,28 @@ $(function(){
 
 var playerArr = [
     { name: 'Splinter',
+      id: 'splinter',
       imgSrc: 'https://pixelatedpop.com/sites/default/files/u4/tmntSplinter.JPG',
       HealthPoints: '180',
       attackPower: '6',
       counterAttackPower: '35',  
     },
     { name: 'Donatello',
+      id: 'donatello',
       imgSrc: 'https://i.pinimg.com/originals/5f/fb/a3/5ffba397e55ef633ea78bb157e8e2b58.jpg',
       HealthPoints: '110',
       attackPower: '6',
       counterAttackPower: '18',  
     },
     { name: 'Shredder',
+      id:'shredder',  
       imgSrc: 'https://res.cloudinary.com/jpress/image/fetch/ar_3:2,c_fill,f_auto,h_400,w_599/http://www.wow247.co.uk/wp-content/uploads/2014/09/Shredder-TMNT.jpg',
       HealthPoints: '190',
       attackPower: '6',
       counterAttackPower: '30',  
     },
     { name: "April O'Neil",
+      id: 'april',
       imgSrc: 'http://thathashtagshow.com/wp-content/uploads/2017/11/tmnt-classics-april-oneil-300x226.jpeg',
       HealthPoints: '80',
       attackPower: '6',
@@ -32,20 +36,26 @@ var playerArr = [
 ]
 
 // create (empty?) player variable
-var mainPlayer = ' ';
+var mainPlayer;
 
 // create (empty?) defender variable
-var mainDefender = ' ';
+var mainDefender;
 
 //Game starts
 
 //create the newElement variables we are going to use
 var parentDiv = $('#character-row');
 
+function updateMainDefender (){
+    $('#left-hp').text('Health Points: '+mainPlayer.HealthPoints);
+    $('#left-player-name').text(mainPlayer.name);
+    $('#left-player-img').attr('src',mainPlayer.imgSrc);
+}
+
 // Character row populates with the four characters (random order possibly)
 playerArr.forEach(function(value, index){
     var newHTML = `
-    <div id ="`+value.name+`"class="col-md-3 text-center mx-auto character-choice"> 
+    <div id ="`+value.id+`"class="col-md-3 text-center mx-auto character-choice"> 
     <div class="card">
         <div class="card-header">
                 <h3 class="card-title">`+value.name+`</h3>
@@ -69,20 +79,32 @@ playerArr.forEach(function(value, index){
         playerArr.forEach(function(value, index) {
             if (matchName === value.name ) {
                 //get index of matched character to send to fighter area
-                console.log('character is: '+value.name+'at index: '+index);
-                console.log(value)
+                console.log('character is: '+value.name+' at index: '+index);
                 
+                               
                 //Player var === '' then var player = this.characterName (object?)
-                if (mainPlayer === ' ') {
-                    mainPLayer = value;
-                    console.log(mainPlayer);
-                }
+                if (mainPlayer === undefined) {
+                    //set player variable to character values 
+                    mainPlayer = {
+                        name:value.name, 
+                        id:value.id,
+                        imgSrc:value.imgSrc, 
+                        HealthPoints:value.HealthPoints, 
+                        attackPower:value.attackPower, 
+                        counterAttackPower:value.counterAttackPower
+                    }
+                    //remove character from character pen
+                    $('#'+value.id).fadeOut();
+                    console.log(mainPlayer.name) //works! 
+                    //moves that character from the fighter area to the main player area
+                    updateMainDefender();
+
+                    //else if 
+                } else if(mainDefender === undefined) {
+                    
+                }       
             };
         });     
-        //moves that character from the fighter area to the main player area
-        //set player variable to character values (Main Player attackPower will be set to 6) -- I think everything else will be 'this.value'
-        //update DOM to reflect those values
-        //else if 
         //defender var === '' then var defender = this.CharacterName (object?)
         //moves that character from fighter area to main "defender" position
         //set player variable to character values
