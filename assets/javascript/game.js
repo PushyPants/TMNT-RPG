@@ -190,7 +190,9 @@ $(document).on('click','#attack-btn', function () {
                 console.log('Player 1 LOSES')
                 resetPlayer1();
                 resetPlayer2();
-                populateCharacters();        }
+                $('#character-row').empty();
+                populateCharacters();        
+            }
         
     }
 });
