@@ -198,6 +198,9 @@ $(document).on('click','#attack-btn', function () {
                 
             
             
+    //ToDo: 
+        //Alert for needing to pick a character
+        //modals for win & lose
         
 
 
