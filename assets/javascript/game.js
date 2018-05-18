@@ -180,7 +180,7 @@ $(document).on('click','#attack-btn', function () {
         //if mainPlayer healthPoints > 0 && mainDefender.healthPoints <= 0
         if (mainPlayer.HealthPoints > 0 && mainDefender.HealthPoints <=0) {
             //Player Wins
-            mainDefender.HealthPoints = 0;
+            $('#right-hp').text("0");
             $('.modal-body').empty();
             $('.modal-body').html('Righteous dude! You totally won!!! <br> Click the button to go again!');
             $('#modalBox').modal('show');
@@ -195,7 +195,7 @@ $(document).on('click','#attack-btn', function () {
                    //mainDefender HP > 0 && mainPLayer HP <= 0 
         } else if (mainDefender.HealthPoints > 0 && mainPlayer.HealthPoints <= 0) {
                 //Player loses
-                mainDefender.HealthPoints = 0;
+                $('#left-hp').text('0');
                 $('.modal-body').empty();
                 $('.modal-body').html('Bogus dude! You totally lost!!! <br> Click the button to go again!');
                 $('#modalBox').modal('show');

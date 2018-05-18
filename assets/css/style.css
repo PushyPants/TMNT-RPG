@@ -23,6 +23,10 @@ body {
 
 }
 
+#character-row .character-choice:hover {
+    cursor: pointer;
+}
+
 
 
 .card {
