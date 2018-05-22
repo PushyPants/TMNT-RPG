@@ -46,6 +46,10 @@ var mainDefender;
 //create the newElement variables we are going to use
 var parentDiv = $('#character-row');
 
+//create audio element in html
+var fightSound = document.createElement("audio");
+fightSound.setAttribute("src", "assets/sounds/punch.mp3");
+
 function updateMainPlayer (){
     var lftHP = $('#left-hp').text(mainPlayer.HealthPoints);
     var lftPlayer = $('#left-player-name').text(mainPlayer.name);
@@ -168,7 +172,8 @@ $(document).on('click','#attack-btn', function () {
         console.log('Not all players chosen')
     } else {
         //Animate comic callout
-        $('.calloutBody img').animate({width:700},200).animate({width:0},200)
+        $('.calloutBody img').animate({width:700},200).animate({width:0},200);
+        fightSound.play();
         //Deacrease mainDefender's health points by mainPLayer's current attack value
         mainDefender.HealthPoints -= mainPlayer.attackPower;
         //Deacrease mainPlayer's heathPoints by the defender's counterAttack value
