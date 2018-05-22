@@ -5,6 +5,16 @@
 
 body {
     background-color: #95CA60;
+    background: url('../images/bgImg.png');
+    background-repeat: repeat;
+}
+
+.fighter-img img {
+    background-color: #ffffff;
+}
+
+.smLogo {
+    width:125px;
 }
 
 .card-title.inline {
@@ -14,6 +24,11 @@ body {
 .card-header {
     background-color: rgb(251, 0, 0);
     border-bottom: 2px solid rgba(0, 0, 0, 0.38);
+}
+
+.list-group-item {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
 }
 
 .fighterCardHeader {
@@ -32,6 +47,7 @@ body {
 .card {
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
+    background-color: #95CA60;
 }
 
 h3 {
@@ -41,7 +57,13 @@ h3 {
     color: black;
     /* -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #333; */
+}
 
+h4 {
+    font-family: turtles-webfont;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: black;
 }
 
 .attack-btn {
@@ -59,6 +81,7 @@ h3 {
     background-color: #95ca60;
     border-bottom: 10px solid #FB0000;
     box-shadow: 0px 3px 5px 0px rgb(35, 35, 35);
+    background: url('https://vignette.wikia.nocookie.net/tmnt2012/images/5/50/Wiki-background/revision/latest?cb=20130221012026')
 }
 
 .turtle-logo {
@@ -67,6 +90,10 @@ h3 {
     height: 275px;
 }
 
+.red-bg {
+    background-color: #fb0000;
+    color: black;
+}
 
 /* .fighters-body {
     min-height: 400px;

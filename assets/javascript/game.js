@@ -56,12 +56,18 @@ function updateMainPlayer (){
     (lftPlayer).fadeIn();
     //$('#left-player-img').fadeOut();
     (lftImg).fadeIn();
+    $('#p1-stat-title').html("<h4>"+mainPlayer.name+"</h4>");
+    $('#p1-stat-HP').text('Health: '+mainPlayer.HealthPoints);
+    $('#p1-stat-attack').text('Attack Strength: '+mainPlayer.attackPower);
     
 }
 function updateMainDefender (){
     $('#right-hp').text(mainDefender.HealthPoints);
     $('#right-player-name').text(mainDefender.name);
     $('#right-player-img').attr('src',mainDefender.imgSrc);
+    $('#p2-stat-title').html("<h4>"+mainDefender.name+"</h4>");
+    $('#p2-stat-HP').text('Health: '+mainDefender.HealthPoints);
+    $('#p2-stat-counter').text('Attack Strength: '+mainDefender.counterAttackPower);
 }
 
 //function to reset Player 2
@@ -69,6 +75,9 @@ function resetPlayer2() {
     $('#right-hp').text('???');
     $('#right-player-name').text('Player 2');
     $('#right-player-img').attr('src', 'assets/images/placeholder.png');
+    $('#p2-stat-title').html("<h4>Player 2</h4>");
+    $('#p2-stat-HP').text('Health: ');
+    $('#p2-stat-counter').text('Attack Strength: ');
     mainDefender = undefined;
     }
 
@@ -77,6 +86,9 @@ function resetPlayer1(){
     $('#left-hp').text('???');
     $('#left-player-name').text('Player 1');
     $('#left-player-img').attr('src', 'assets/images/placeholder.png');
+    $('#p1-stat-title').html("<h4>Player 1</h4>");
+    $('#p1-stat-HP').text('Health: ');
+    $('#p1-stat-attack').text('Attack Strength: ');
     mainPlayer = undefined;
     }
 //create funtion to populate the characters row
@@ -181,6 +193,7 @@ $(document).on('click','#attack-btn', function () {
         if (mainPlayer.HealthPoints > 0 && mainDefender.HealthPoints <=0) {
             //Player Wins
             $('#right-hp').text("0");
+            $('#p2-stat-HP').text('Health: 0');
             $('.modal-body').empty();
             $('.modal-body').html('Righteous dude! You totally won!!! <br> Click the button to go again!');
             $('#modalBox').modal('show');
@@ -196,6 +209,7 @@ $(document).on('click','#attack-btn', function () {
         } else if (mainDefender.HealthPoints > 0 && mainPlayer.HealthPoints <= 0) {
                 //Player loses
                 $('#left-hp').text('0');
+                $('#p1-stat-HP').text('Health: 0');
                 $('.modal-body').empty();
                 $('.modal-body').html('Bogus dude! You totally lost!!! <br> Click the button to go again!');
                 $('#modalBox').modal('show');
