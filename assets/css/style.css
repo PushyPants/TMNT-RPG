@@ -38,6 +38,11 @@ body {
 
 }
 
+.card.character-pen {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
 #character-row .character-choice:hover {
     cursor: pointer;
 }
