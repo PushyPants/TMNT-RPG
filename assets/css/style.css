@@ -133,3 +133,20 @@ h4 {
 .modal-backdrop {
     opacity: 0;
 }
+.calloutContainer{
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.calloutBody {
+    position: relative;
+    left: -50%;
+    margin-top: -35%;
+}
+
+
+.calloutBody img {
+    width:0px;
+}
