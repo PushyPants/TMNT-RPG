@@ -27,7 +27,7 @@ var playerArr = [
     },
     { name: "April O'Neil",
       id: 'april',
-      imgSrc: 'http://thathashtagshow.com/wp-content/uploads/2017/11/tmnt-classics-april-oneil-300x226.jpeg',
+      imgSrc: 'http://www.homorazzi.com/wp-content/uploads/2013/02/april-o-neil-ninja-turtles.jpg',
       HealthPoints: '80',
       attackPower: '6',
       counterAttackPower: '10',  
@@ -194,6 +194,7 @@ $(document).on('click','#attack-btn', function () {
             $('.modal-footer').on('click','.btn',function(){
                 $('#modalBox').modal('hide');
                 resetPlayer2();
+                console.log('reseting player 2')
             })
             
             
@@ -202,6 +203,7 @@ $(document).on('click','#attack-btn', function () {
                    //mainDefender HP > 0 && mainPLayer HP <= 0 
         } else if (mainDefender.HealthPoints > 0 && mainPlayer.HealthPoints <= 0) {
                 //Player loses
+                console.log('reseting both players')
                 $('#left-hp').text('0');
                 $('.modal-body').empty();
                 $('.modal-body').html('Bogus dude! You totally lost!!! <br> Click the button to go again!');
